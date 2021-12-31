@@ -4,4 +4,11 @@ const company = {
   zip: '080976',
 };
 
+const metaCompany = {
+  ...company,
+  city: 'Zambia',
+  zip: '098765',
+};
+
 console.log(company);
+console.log(metaCompany);
