@@ -12,6 +12,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
@@ -21,7 +25,7 @@ module.exports = {
       {
         test: /\.(s[ac]|c)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          { loader: MiniCssExtractPlugin.loader, options: { publicPath: ' ' } },
           'css-loader',
           'postcss-loader',
           'sass-loader',
@@ -30,6 +34,9 @@ module.exports = {
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+  // output: { //not working
+  //   assetModuleFilename: 'images/[hash]/[ext]/[query]',
+  // },
   devtool: 'source-map',
   devServer: {
     static: './dist',
